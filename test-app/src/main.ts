@@ -2,12 +2,7 @@
 import "./style.css";
 import typescriptLogo from "./typescript.svg";
 import { html, render } from "lit-html";
-import { Logger } from "../../src";
-// import { setupCounter } from "./counter";
-
-const logger = new Logger({
-  timestamp: false,
-});
+import { logger } from "./logger";
 
 const counter = () => {
   let count = 0;

@@ -8,6 +8,7 @@ export type LogOptions = {
   };
   trace?: boolean;
   timestamp?: boolean;
+  stampFirst?: boolean;
 };
 interface ILogOptions {
   colorize: boolean;
@@ -15,6 +16,7 @@ interface ILogOptions {
     [key in LogLevels]: string;
   };
   level: number;
+  stampFirst: boolean;
   timestamp: boolean;
   trace: boolean;
 }
@@ -31,18 +33,19 @@ export class Logger implements ILogger {
     level: 0,
     colorize: true,
     colors: {
-      debug: "#67E8F9",
-      info: "#93C5FD",
+      debug: "#A5B4FC",
+      info: "#67E8F9",
       warn: "#FDE047",
       error: "#FCA5A5",
     },
     trace: true,
     timestamp: true,
+    stampFirst: true,
   };
 
   public constructor(options?: LogOptions) {
     if (options) {
-      if (options.level) this._options.level = this.logLevel(options.level);
+      if (options.level) this._options.level = this._logLevel(options.level);
       if (options.colorize !== undefined)
         this._options.colorize = options.colorize;
       if (options.colors) {
@@ -58,6 +61,8 @@ export class Logger implements ILogger {
       if (options.trace !== undefined) this._options.trace = options.trace;
       if (options.timestamp !== undefined)
         this._options.timestamp = options.timestamp;
+      if (options.stampFirst !== undefined)
+        this._options.stampFirst = options.stampFirst;
     }
   }
 
@@ -77,25 +82,7 @@ export class Logger implements ILogger {
     this._log("warn", msg);
   }
 
-  private _log(lvl: LogLevels, msg: any): void {
-    const showTraceStamp = this._options.trace || this._options.timestamp;
-    const trace = this._options.trace ? `${this.getStacktrace()} ` : "";
-    const stamp = this._options.timestamp ? `${this.timestamp()} |` : "";
-    const color = `color: ${this._options.colors[lvl]}`;
-    const traceStamp = `${trace}${stamp}`;
-
-    if (this.logLevel(lvl) >= this._options.level) {
-      if (!showTraceStamp) {
-        console[lvl](msg);
-      }
-      if (showTraceStamp) {
-        if (this._options.colorize) console[lvl](`%c${traceStamp}`, color, msg);
-        else console[lvl](traceStamp, msg);
-      }
-    }
-  }
-
-  private getStacktrace(): string {
+  private _getStacktrace(): string {
     let stack;
     try {
       throw new Error("");
@@ -108,17 +95,37 @@ export class Logger implements ILogger {
       const _file = _path[_path.length - 1].split("?");
       const _line = _file[_file.length - 1].split(":");
 
-      return `${_file[0]}:${_line.pop()} | ${_trace[0]} |`;
+      return `${_file[0]}:${_line.pop()} | ${_trace[0]}`;
     });
     return stack[3];
   }
 
-  private logLevel(level: LogLevels): number {
+  private _log(lvl: LogLevels, msg: any): void {
+    const showTraceStamp = this._options.trace || this._options.timestamp;
+    const trace = this._options.trace ? `${this._getStacktrace()}` : "";
+    const stamp = this._options.timestamp ? `${this._timestamp()}` : "";
+    const color = `color: ${this._options.colors[lvl]}`;
+    const traceStamp = this._options.stampFirst
+      ? `${stamp} | ${trace} | `
+      : `${trace} | ${stamp} | `;
+
+    if (this._logLevel(lvl) >= this._options.level) {
+      if (!showTraceStamp) {
+        console[lvl](msg);
+      }
+      if (showTraceStamp) {
+        if (this._options.colorize) console[lvl](`%c${traceStamp}`, color, msg);
+        else console[lvl](traceStamp, msg);
+      }
+    }
+  }
+
+  private _logLevel(level: LogLevels): number {
     const lvls = ["debug", "info", "warn", "error"];
     return lvls.findIndex((lvl) => lvl === level);
   }
 
-  private timestamp() {
+  private _timestamp() {
     return new Date().toLocaleTimeString();
   }
 }
