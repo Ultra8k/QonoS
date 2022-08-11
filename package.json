@@ -6,8 +6,12 @@
   "scripts": {
     "test": "jest"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "typescript",
+    "logger",
+    "console"
+  ],
+  "author": "Ultra 8k, Inc.",
   "license": "ISC",
   "dependencies": {
     "typescript": "^4.7.4"
@@ -29,5 +33,10 @@
   },
   "files": [
     "src"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ultra8k/QonoS"
+  },
+  "private": false
 }
