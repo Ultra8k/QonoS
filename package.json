@@ -11,7 +11,7 @@
     "logger",
     "console"
   ],
-  "author": "Ultra 8k, Inc.",
+  "author": "Ultra 8k Inc",
   "license": "ISC",
   "dependencies": {
     "typescript": "^4.7.4"
