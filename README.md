@@ -1,20 +1,20 @@
 # QonoS
 
-Qonos, log in Kilngon, is a basic Typescript based console logger with level, color, trace and timestamp options.
+Qonos, which is Kilngon for Log, is a basic Typescript console logger with simple options for level, color, trace and timestamp.
 
 ## Install
 
-`npm i @ultra8k/qonos`
+`npm i @ultra8k/qonos -D`
 
-`yarn add @ultra8k/qonos`
+`yarn add @ultra8k/qonos -D`
 
-`pnpm add @ultra8k/qonos`
+`pnpm add @ultra8k/qonos -D`
 
 ## Options
 
 | Name       | Type    | Default                                                                                      | Description                                                                                                                                                            |
 | ---------- | ------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| level      | Number  | 0                                                                                            | Choose between [0 (debug), 1 (info), 2 (warn), 3 (error)]                                                                                                              |
+| level      | String  | "debug"                                                                                      | Determines the minimum level that will execute.<br>Choose between "debug", "info", "warn", "error"                                                                     |
 | colorize   | Boolean | true                                                                                         | If true; use customized console level colors.<br><br>If false; use the default console colors                                                                          |
 | colors     | Object  | {<br> debug: "#A5B4FC",<br> info: "#67E8F9",<br> warn: "#FDE047",<br> error: "#FCA5A5",<br>} | Custom level colors                                                                                                                                                    |
 | trace      | Boolean | true                                                                                         | Show file name and line number                                                                                                                                         |

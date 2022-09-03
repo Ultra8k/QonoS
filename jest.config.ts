@@ -1,8 +1,8 @@
 import type { Config } from "@jest/types";
+import { defaults } from "jest-config";
 
 // Sync object
 const config: Config.InitialOptions = {
-  clearMocks: true,
-  verbose: true,
+  ...defaults,
 };
 export default config;
