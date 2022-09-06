@@ -1,6 +1,6 @@
 {
   "name": "@ultra8k/qonos",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A basic Typescript console logger",
   "main": "src/index.ts",
   "scripts": {
