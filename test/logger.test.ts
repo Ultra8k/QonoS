@@ -42,4 +42,9 @@ describe("Logger", () => {
     logger.error("this is an error");
     expect(logger.error).toHaveBeenCalledTimes(1);
   });
+
+  it("can except multiple args", () => {
+    const logger = new Logger();
+    expect(logger.debug("arg 1", "arg 2")).toBeTruthy();
+  });
 });
