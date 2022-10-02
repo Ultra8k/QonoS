@@ -8,10 +8,26 @@ const counter = () => {
   let count = 0;
   const increment = () => {
     count++;
-    logger.debug(count);
-    logger.info(count);
-    logger.warn(count);
-    logger.error(count);
+    logger.debug(
+      [1, 2, 3],
+      { test: { prop: ["something"], test2: "something else" } },
+      count
+    );
+    logger.info(
+      [1, 2, 3],
+      { test: { prop: ["something"], test2: "something else" } },
+      count
+    );
+    logger.warn(
+      [1, 2, 3],
+      { test: { prop: ["something"], test2: "something else" } },
+      count
+    );
+    logger.error(
+      [1, 2, 3],
+      { test: { prop: ["something"], test2: "something else" } },
+      count
+    );
   };
   return html`
     <button id="counter" type="button" @click="${increment}">
