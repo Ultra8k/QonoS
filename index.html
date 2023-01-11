@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="dist/qonos.umd.js"></script>
+    <script>
+      const umdLogger = new qonos.Logger();
+      function umdlogit() {
+        umdLogger.debug("yay", "it", "works");
+      }
+
+      umdlogit();
+    </script>
+
+    <script type="module">
+      import { Logger } from "/dist/qonos.mjs";
+      const options = {
+        level: "info",
+        colorize: true,
+        colors: {
+          debug: "#A5B4FC",
+          info: "#67E8F9",
+          warn: "#FDE047",
+          error: "#FCA5A5",
+        },
+        trace: true,
+        timestamp: true,
+        stampFirst: true,
+      };
+      const esLogger = new Logger(options);
+      function eslogit() {
+        esLogger.debug("yay", "it", "works");
+      }
+
+      eslogit();
+    </script>
+  </body>
+</html>

@@ -1,32 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-export type LogLevels = "debug" | "info" | "warn" | "error";
-export type LogOptions = {
-  level?: LogLevels;
-  colorize?: boolean;
-  colors?: {
-    [key in LogLevels]?: string;
-  };
-  trace?: boolean;
-  timestamp?: boolean;
-  stampFirst?: boolean;
-};
-interface ILogOptions {
-  colorize: boolean;
-  colors: {
-    [key in LogLevels]: string;
-  };
-  level: number;
-  stampFirst: boolean;
-  timestamp: boolean;
-  trace: boolean;
-}
-
-interface ILogger {
-  debug(...msg: any[]): void;
-  error(...msg: any[]): void;
-  info(...msg: any[]): void;
-  warn(...msg: any[]): void;
-}
+import { ILogger, LogOptions, ILogOptions, LogLevels } from "./index.d";
 
 export class Logger implements ILogger {
   private _options: ILogOptions = {
@@ -66,19 +38,19 @@ export class Logger implements ILogger {
     }
   }
 
-  public debug(...msg: any[]): void {
+  public debug(...msg: unknown[]): void {
     this._log("debug", ...msg);
   }
 
-  public error(...msg: any[]): void {
+  public error(...msg: unknown[]): void {
     this._log("error", ...msg);
   }
 
-  public info(...msg: any[]): void {
+  public info(...msg: unknown[]): void {
     this._log("info", ...msg);
   }
 
-  public warn(...msg: any[]): void {
+  public warn(...msg: unknown[]): void {
     this._log("warn", ...msg);
   }
 
@@ -100,7 +72,7 @@ export class Logger implements ILogger {
     return stack[3];
   }
 
-  private _log(lvl: LogLevels, ...msg: any[]): void {
+  private _log(lvl: LogLevels, ...msg: unknown[]): void {
     const showTraceStamp = this._options.trace || this._options.timestamp;
     const trace = this._options.trace ? `${this._getStacktrace()}` : "";
     const stamp = this._options.timestamp ? `${this._timestamp()}` : "";
