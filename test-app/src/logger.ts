@@ -1,4 +1,4 @@
-import { Logger, LogOptions } from "../../src";
+import { Logger, LogOptions } from "@ultra8k/qonos";
 
 const options: LogOptions = {};
 

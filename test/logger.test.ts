@@ -45,6 +45,7 @@ describe("Logger", () => {
 
   it("can except multiple args", () => {
     const logger = new Logger();
-    expect(logger.debug("arg 1", "arg 2")).toBeTruthy();
+    logger.debug("arg 1", "arg 2");
+    expect(logger.debug).toHaveBeenCalledTimes(1);
   });
 });

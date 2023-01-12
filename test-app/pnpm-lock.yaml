@@ -1,9 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@ultra8k/qonos': file:../ultra8k-qonos-0.3.0.tgz
   lit-html: ^2.2.7
   typescript: ^4.6.4
   vite: ^3.0.0
+
+dependencies:
+  '@ultra8k/qonos': file:../ultra8k-qonos-0.3.0.tgz
 
 devDependencies:
   lit-html: 2.2.7
@@ -309,7 +313,6 @@ packages:
     resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==}
     engines: {node: '>=4.2.0'}
     hasBin: true
-    dev: true
 
   /vite/3.0.2:
     resolution: {integrity: sha512-TAqydxW/w0U5AoL5AsD9DApTvGb2iNbGs3sN4u2VdT1GFkQVUfgUldt+t08TZgi23uIauh1TUOQJALduo9GXqw==}
@@ -337,3 +340,11 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  file:../ultra8k-qonos-0.3.0.tgz:
+    resolution: {integrity: sha512-gDyU/7fjrV80T23ZPM8CoMxqOlNcTFhTzlmDZQW5R4MDEDzKbFh8Zmt14G/Plx1p89BGc6AEScfINdKwd85ccA==, tarball: file:../ultra8k-qonos-0.3.0.tgz}
+    name: '@ultra8k/qonos'
+    version: 0.3.0
+    dependencies:
+      typescript: 4.7.4
+    dev: false

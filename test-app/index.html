@@ -9,5 +9,11 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
+    <script src="./node_modules/@ultra8k/qonos/dist/qonos.umd.js"></script>
+    <script>
+      const logger = new qonos.Logger();
+      logger.debug("this", "worked!");
+      logger.info("so", "does", "this");
+    </script>
   </body>
 </html>

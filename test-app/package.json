@@ -8,6 +8,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
+  "dependencies": {
+    "@ultra8k/qonos": "file:../ultra8k-qonos-0.3.0.tgz"
+  },
   "devDependencies": {
     "lit-html": "^2.2.7",
     "typescript": "^4.6.4",

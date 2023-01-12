@@ -23,11 +23,12 @@ Qonos, which is Kilngon for Log, is a basic Typescript console logger with simpl
 
 ## Usage
 
+### ES Module
+
 ```javascript
-// import and configure QonoS
-import { Logger, LogOptions } from "@ultra8k/qonos";
+import { Logger } from "@ultra8k/qonos";
 const options: LogOptions = {
-  level: 0,
+  level: "debug",
   colorize: true,
   colors: {
     debug: "#A5B4FC",
@@ -46,4 +47,28 @@ logger.debug("log a debug message");
 logger.info("log an info message");
 logger.warn("log a warn message");
 logger.error("log an error message");
+```
+
+### UMD Module
+
+```html
+<script src="@ultra8k/qonos/dist/qonos.umd.js"></script>
+<script>
+  const options = {
+    level: "debug",
+    colorize: true,
+    colors: {
+      debug: "#A5B4FC",
+      info: "#67E8F9",
+      warn: "#FDE047",
+      error: "#FCA5A5",
+    },
+    trace: true,
+    timestamp: true,
+    stampFirst: true,
+  };
+  const logger = new qonos.Logger(options);
+  logger.debug("this", "works!");
+  logger.info("so", "does", "this");
+</script>
 ```
